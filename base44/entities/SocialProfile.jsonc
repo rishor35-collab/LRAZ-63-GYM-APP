@@ -1,0 +1,77 @@
+{
+  "name": "SocialProfile",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Owner user id (one profile per user)"
+    },
+    "username": {
+      "type": "string",
+      "description": "Public handle, searchable by other users"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "string"
+    },
+    "avatar_url": {
+      "type": "string"
+    },
+    "is_private": {
+      "type": "boolean",
+      "default": false,
+      "description": "When true, follows require approval and non-followers see only basic info"
+    },
+    "share_training_stats": {
+      "type": "boolean",
+      "default": false,
+      "description": "When true, aggregate training stats are visible on the public profile"
+    },
+    "share_to_feed": {
+      "type": "boolean",
+      "default": false,
+      "description": "When true, workout/PR/cardio activities are auto-posted to the community feed"
+    },
+    "public_workout_count": {
+      "type": "number",
+      "default": 0
+    },
+    "public_total_volume": {
+      "type": "number",
+      "default": 0
+    },
+    "public_pr_count": {
+      "type": "number",
+      "default": 0
+    },
+    "public_cardio_count": {
+      "type": "number",
+      "default": 0
+    },
+    "public_streak": {
+      "type": "number",
+      "default": 0
+    },
+    "public_goal": {
+      "type": "string",
+      "description": "Optional public training goal label"
+    }
+  },
+  "required": [
+    "user_id"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "data.user_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "name": "WorkoutSession",
+  "type": "object",
+  "properties": {
+    "program_id": {
+      "type": "string",
+      "description": "Reference to the TrainingProgram this session belongs to, if any"
+    },
+    "program_day_name": {
+      "type": "string",
+      "description": "Which program day this session represents"
+    },
+    "name": {
+      "type": "string",
+      "description": "Session name e.g. Push Day A"
+    },
+    "focus": {
+      "type": "string",
+      "description": "Training focus e.g. Chest, Shoulders, Triceps"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "duration_minutes": {
+      "type": "number",
+      "description": "Total session duration"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "in_progress",
+        "completed",
+        "skipped"
+      ],
+      "default": "in_progress"
+    },
+    "total_volume_kg": {
+      "type": "number",
+      "description": "Computed total volume"
+    },
+    "estimated_1rm_top_set": {
+      "type": "number",
+      "description": "Best estimated 1RM from this session"
+    },
+    "rpe_session": {
+      "type": "number",
+      "description": "Session RPE"
+    },
+    "pr_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of personal records hit this session"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "synced": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether offline-created session has synced"
+    }
+  },
+  "required": [
+    "name",
+    "date"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

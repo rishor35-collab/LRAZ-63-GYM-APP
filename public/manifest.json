@@ -1,0 +1,34 @@
+{
+  "name": "LRAZ 63 Performance OS",
+  "short_name": "LRAZ 63",
+  "description": "Elite performance ecosystem — strength programming, nutrition, and recovery science for athletes.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "categories": ["health", "fitness", "sports"],
+  "icons": [
+    {
+      "src": "https://media.base44.com/images/public/6a7af27a605035ae79f8800a/36834db60_644434DD-1C1B-4B74-9DDA-96856EDE85C2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://media.base44.com/images/public/6a7af27a605035ae79f8800a/36834db60_644434DD-1C1B-4B74-9DDA-96856EDE85C2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "Today's Workout", "short_name": "Workout", "url": "/widget/workout" },
+    { "name": "Calories & Macros", "short_name": "Nutrition", "url": "/widget/nutrition" },
+    { "name": "Water Tracker", "short_name": "Water", "url": "/widget/water" },
+    { "name": "Training Streak", "short_name": "Streak", "url": "/widget/streak" },
+    { "name": "Weight Goal", "short_name": "Weight", "url": "/widget/weight" },
+    { "name": "Quick Actions", "short_name": "Quick", "url": "/widget/quick" }
+  ]
+}

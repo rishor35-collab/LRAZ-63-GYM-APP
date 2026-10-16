@@ -1,0 +1,61 @@
+{
+  "name": "ProgressPhoto",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "view": {
+      "type": "string",
+      "enum": [
+        "Front",
+        "Side",
+        "Back"
+      ],
+      "default": "Front"
+    },
+    "pose": {
+      "type": "string",
+      "enum": [
+        "Relaxed",
+        "Flexed"
+      ],
+      "default": "Relaxed"
+    },
+    "photo_url": {
+      "type": "string",
+      "description": "Stored photo URL (private by default)"
+    },
+    "weight_kg": {
+      "type": "number",
+      "description": "Weight context at time of photo"
+    },
+    "height_cm": {
+      "type": "number"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "is_private": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "date",
+    "view",
+    "photo_url"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

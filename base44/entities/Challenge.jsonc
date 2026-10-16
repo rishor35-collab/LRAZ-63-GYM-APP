@@ -1,0 +1,84 @@
+{
+  "name": "Challenge",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "workout_count",
+        "volume",
+        "cardio_distance",
+        "calories_burned",
+        "streak",
+        "custom"
+      ],
+      "default": "workout_count"
+    },
+    "target_value": {
+      "type": "number",
+      "description": "Target metric value to reach"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Display unit e.g. workouts, kg, km, kcal, days"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "creator_id": {
+      "type": "string"
+    },
+    "creator_name": {
+      "type": "string"
+    },
+    "participant_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "participant_names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "completed",
+        "cancelled"
+      ],
+      "default": "active"
+    }
+  },
+  "required": [
+    "name",
+    "type",
+    "creator_id"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "data.creator_id": "{{user.id}}"
+    },
+    "update": {},
+    "delete": {
+      "data.creator_id": "{{user.id}}"
+    }
+  }
+}

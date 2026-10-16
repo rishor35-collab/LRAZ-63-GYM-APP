@@ -1,0 +1,57 @@
+{
+  "name": "ScheduledWorkout",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "title": {
+      "type": "string"
+    },
+    "program_id": {
+      "type": "string",
+      "description": "Reference to TrainingProgram when scheduled from a program"
+    },
+    "program_day_name": {
+      "type": "string"
+    },
+    "day_index": {
+      "type": "number",
+      "description": "Index of the program day scheduled"
+    },
+    "focus": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "manual",
+        "program"
+      ],
+      "default": "manual"
+    },
+    "completed": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "date",
+    "title"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

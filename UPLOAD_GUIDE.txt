@@ -1,0 +1,1 @@
+LRAZ63 corrected project structure. IMPORTANT: Upload preserving directories, especially src/components, src/pages, src/lib, src/api. Do not flatten files. This is a structural repackaging, NOT a fully validated standalone Supabase migration. Existing Base44 references may remain. Never upload .env or secret keys.

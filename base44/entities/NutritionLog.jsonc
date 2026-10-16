@@ -1,0 +1,91 @@
+{
+  "name": "NutritionLog",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "meal": {
+      "type": "string",
+      "enum": [
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Snack",
+        "Pre-Workout",
+        "Post-Workout"
+      ],
+      "default": "Snack"
+    },
+    "food_name": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "number",
+      "description": "Number of servings or grams"
+    },
+    "unit": {
+      "type": "string",
+      "description": "serving, g, ml, oz",
+      "default": "serving"
+    },
+    "calories": {
+      "type": "number"
+    },
+    "protein_g": {
+      "type": "number"
+    },
+    "carbs_g": {
+      "type": "number"
+    },
+    "fat_g": {
+      "type": "number"
+    },
+    "fiber_g": {
+      "type": "number"
+    },
+    "sugar_g": {
+      "type": "number"
+    },
+    "sodium_mg": {
+      "type": "number"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "Database",
+        "User Entered",
+        "AI Estimated",
+        "Barcode",
+        "Recipe"
+      ],
+      "default": "Database"
+    },
+    "is_ai_estimated": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether nutrition values were AI estimated and should allow manual correction"
+    },
+    "logged_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "date",
+    "food_name",
+    "calories"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

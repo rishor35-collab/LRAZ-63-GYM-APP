@@ -1,0 +1,114 @@
+{
+  "name": "BodyMeasurement",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "weight_kg": {
+      "type": "number",
+      "description": "Body weight in kilograms"
+    },
+    "weight_lbs": {
+      "type": "number",
+      "description": "Body weight in pounds"
+    },
+    "body_fat_percent": {
+      "type": "number",
+      "description": "Body fat percentage"
+    },
+    "body_fat_method": {
+      "type": "string",
+      "enum": [
+        "DEXA",
+        "Bod Pod",
+        "Hydrostatic",
+        "Calipers",
+        "BIA",
+        "Circumference Estimate",
+        "Visual Estimate",
+        "User Entered"
+      ],
+      "description": "Source method for the body-fat value"
+    },
+    "body_fat_confidence": {
+      "type": "string",
+      "enum": [
+        "High",
+        "Moderate",
+        "Low",
+        "Insufficient Data"
+      ],
+      "default": "Moderate"
+    },
+    "body_fat_is_estimate": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the body-fat value is an estimate vs directly measured"
+    },
+    "waist_cm": {
+      "type": "number"
+    },
+    "hip_cm": {
+      "type": "number"
+    },
+    "neck_cm": {
+      "type": "number"
+    },
+    "chest_cm": {
+      "type": "number"
+    },
+    "shoulder_cm": {
+      "type": "number"
+    },
+    "arm_cm": {
+      "type": "number"
+    },
+    "forearm_cm": {
+      "type": "number"
+    },
+    "thigh_cm": {
+      "type": "number"
+    },
+    "calf_cm": {
+      "type": "number"
+    },
+    "resting_hr": {
+      "type": "number",
+      "description": "Resting heart rate bpm"
+    },
+    "lean_mass_kg": {
+      "type": "number"
+    },
+    "fat_mass_kg": {
+      "type": "number"
+    },
+    "measurement_conditions": {
+      "type": "string",
+      "description": "Conditions e.g. morning, fasted"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "flagged_inconsistent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Flagged as a possible measurement error"
+    }
+  },
+  "required": [
+    "date"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

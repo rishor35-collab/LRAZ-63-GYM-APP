@@ -1,0 +1,80 @@
+{
+  "name": "Message",
+  "type": "object",
+  "properties": {
+    "conversation_id": {
+      "type": "string"
+    },
+    "sender_id": {
+      "type": "string"
+    },
+    "participant_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Denormalized from conversation for RLS"
+    },
+    "content": {
+      "type": "string"
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "program | meal | exercise | workout | photo"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "subtitle": {
+            "type": "string"
+          },
+          "image_url": {
+            "type": "string"
+          },
+          "snapshot": {
+            "type": "object",
+            "description": "Denormalized content snapshot so receivers can view shared content even if the original is later deleted or not accessible to them"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "conversation_id",
+    "sender_id",
+    "participant_ids"
+  ],
+  "rls": {
+    "read": {
+      "data.participant_ids": "{{user.id}}"
+    },
+    "create": {
+      "$and": [
+        {
+          "data.sender_id": "{{user.id}}"
+        },
+        {
+          "data.participant_ids": {
+            "$in": [
+              "{{user.id}}"
+            ]
+          }
+        }
+      ]
+    },
+    "update": {
+      "data.sender_id": "{{user.id}}"
+    },
+    "delete": {
+      "data.sender_id": "{{user.id}}"
+    }
+  }
+}
