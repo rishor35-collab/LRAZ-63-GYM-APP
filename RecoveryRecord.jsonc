@@ -1,0 +1,84 @@
+{
+  "name": "RecoveryRecord",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "sleep_hours": {
+      "type": "number"
+    },
+    "sleep_quality": {
+      "type": "number",
+      "description": "1-10"
+    },
+    "hrv": {
+      "type": "number",
+      "description": "Heart rate variability ms"
+    },
+    "resting_hr": {
+      "type": "number"
+    },
+    "stress_level": {
+      "type": "number",
+      "description": "1-10"
+    },
+    "soreness_level": {
+      "type": "number",
+      "description": "1-10"
+    },
+    "fatigue_level": {
+      "type": "number",
+      "description": "1-10"
+    },
+    "mood": {
+      "type": "number",
+      "description": "1-10"
+    },
+    "energy": {
+      "type": "number",
+      "description": "1-10"
+    },
+    "steps": {
+      "type": "number"
+    },
+    "readiness_score": {
+      "type": "number",
+      "description": "Computed readiness 0-100"
+    },
+    "recovery_score": {
+      "type": "number",
+      "description": "Computed recovery 0-100"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "Manual",
+        "Wearable",
+        "Apple Health",
+        "Health Connect",
+        "Garmin",
+        "WHOOP",
+        "Oura",
+        "Fitbit",
+        "Polar"
+      ],
+      "default": "Manual"
+    }
+  },
+  "required": [
+    "date"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

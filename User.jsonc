@@ -1,0 +1,125 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "user"
+      ],
+      "default": "user",
+      "description": "The role of the user in the app"
+    },
+    "username": {
+      "type": "string",
+      "description": "Unique @username"
+    },
+    "age": {
+      "type": "number"
+    },
+    "sex": {
+      "type": "string",
+      "enum": [
+        "male",
+        "female"
+      ]
+    },
+    "height_cm": {
+      "type": "number"
+    },
+    "weight_kg": {
+      "type": "number"
+    },
+    "goal_weight_kg": {
+      "type": "number"
+    },
+    "preferred_units": {
+      "type": "string",
+      "enum": [
+        "metric",
+        "imperial"
+      ],
+      "default": "metric"
+    },
+    "activity_level": {
+      "type": "string",
+      "enum": [
+        "sedentary",
+        "light",
+        "moderate",
+        "active",
+        "very_active"
+      ],
+      "default": "moderate"
+    },
+    "primary_goal": {
+      "type": "string"
+    },
+    "experience_level": {
+      "type": "string",
+      "enum": [
+        "Beginner",
+        "Intermediate",
+        "Advanced"
+      ],
+      "default": "Beginner"
+    },
+    "days_per_week": {
+      "type": "number"
+    },
+    "preferred_split": {
+      "type": "string"
+    },
+    "gym_or_home": {
+      "type": "string",
+      "enum": [
+        "gym",
+        "home"
+      ],
+      "default": "gym"
+    },
+    "equipment": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "session_duration_minutes": {
+      "type": "number"
+    },
+    "dietary_preference": {
+      "type": "string"
+    },
+    "allergies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "injury_history": {
+      "type": "string"
+    },
+    "medical_notes": {
+      "type": "string"
+    },
+    "onboarding_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "theme_preference": {
+      "type": "string",
+      "enum": [
+        "dark",
+        "light"
+      ],
+      "default": "dark"
+    },
+    "notification_preferences": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "role"
+  ]
+}

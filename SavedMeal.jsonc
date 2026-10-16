@@ -1,0 +1,83 @@
+{
+  "name": "SavedMeal",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "User-defined meal name e.g. My Breakfast, Chicken & Rice"
+    },
+    "meal_type": {
+      "type": "string",
+      "enum": [
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Snack",
+        "Pre-Workout",
+        "Post-Workout"
+      ],
+      "default": "Snack"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "food_name": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "calories": {
+            "type": "number"
+          },
+          "protein_g": {
+            "type": "number"
+          },
+          "carbs_g": {
+            "type": "number"
+          },
+          "fat_g": {
+            "type": "number"
+          },
+          "fiber_g": {
+            "type": "number"
+          },
+          "sugar_g": {
+            "type": "number"
+          },
+          "sodium_mg": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Food items that make up this saved meal"
+    },
+    "total_calories": {
+      "type": "number",
+      "description": "Computed total calories for the meal"
+    },
+    "total_protein_g": {
+      "type": "number",
+      "description": "Computed total protein for the meal"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

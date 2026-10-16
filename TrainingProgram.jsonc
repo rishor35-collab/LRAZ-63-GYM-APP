@@ -1,0 +1,264 @@
+{
+  "name": "TrainingProgram",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "goal": {
+      "type": "string",
+      "enum": [
+        "Muscle Gain",
+        "Fat Loss",
+        "Body Recomposition",
+        "Strength",
+        "Hypertrophy",
+        "Athletic Performance",
+        "Endurance",
+        "General Fitness",
+        "Maintenance",
+        "Beginner Foundation",
+        "Return-to-Training",
+        "Competition Preparation"
+      ],
+      "default": "Hypertrophy"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "Full Body",
+        "Upper Lower",
+        "Push Pull Legs",
+        "Push Pull",
+        "Bro Split",
+        "Arnold Split",
+        "Powerbuilding",
+        "Powerlifting",
+        "Olympic Lifting",
+        "Hybrid",
+        "Calisthenics",
+        "Sport-Specific",
+        "Home"
+      ],
+      "default": "Upper Lower"
+    },
+    "days_per_week": {
+      "type": "number",
+      "default": 4
+    },
+    "session_duration_minutes": {
+      "type": "number",
+      "default": 60
+    },
+    "experience_level": {
+      "type": "string",
+      "enum": [
+        "Beginner",
+        "Intermediate",
+        "Advanced"
+      ],
+      "default": "Intermediate"
+    },
+    "equipment": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "duration_weeks": {
+      "type": "number",
+      "default": 8
+    },
+    "phase": {
+      "type": "string",
+      "enum": [
+        "Foundation",
+        "Hypertrophy",
+        "Strength",
+        "Power",
+        "Cutting",
+        "Lean Gaining",
+        "Recomposition",
+        "Maintenance",
+        "Deload",
+        "Competition Prep",
+        "Post-Event Recovery",
+        "Transition"
+      ],
+      "default": "Hypertrophy"
+    },
+    "blocks": {
+      "type": "array",
+      "description": "Optional mesocycle block structure (e.g. Accumulation, Intensification, Deload)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "weeks": {
+            "type": "number"
+          },
+          "phase": {
+            "type": "string"
+          },
+          "target_rpe": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "is_ai_generated": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_template": {
+      "type": "boolean",
+      "default": false,
+      "description": "Reusable template programs can be duplicated into new active programs"
+    },
+    "archived": {
+      "type": "boolean",
+      "default": false,
+      "description": "Archived programs are hidden from the active list but preserved"
+    },
+    "draft": {
+      "type": "boolean",
+      "default": false,
+      "description": "Draft programs are unfinished and hidden from the active list until finalized"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "description": "The currently active program used for scheduling and next-workout logic"
+    },
+    "schedule_type": {
+      "type": "string",
+      "enum": [
+        "fixed",
+        "rotating"
+      ],
+      "default": "fixed",
+      "description": "Fixed weekdays or rotating sequence based on last completed session"
+    },
+    "weekday_map": {
+      "type": "object",
+      "description": "Map of weekday index (0=Mon) to day index in days array, for fixed scheduling"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Program start date for progress tracking"
+    },
+    "days": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "day_name": {
+            "type": "string"
+          },
+          "focus": {
+            "type": "string"
+          },
+          "exercises": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "exercise_name": {
+                  "type": "string"
+                },
+                "exercise_id": {
+                  "type": "string"
+                },
+                "sets": {
+                  "type": "number"
+                },
+                "reps_low": {
+                  "type": "number"
+                },
+                "reps_high": {
+                  "type": "number"
+                },
+                "rir_target": {
+                  "type": "number"
+                },
+                "rest_seconds": {
+                  "type": "number"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "set_type": {
+                  "type": "string",
+                  "enum": [
+                    "warmup",
+                    "working"
+                  ],
+                  "default": "working"
+                },
+                "optional": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            }
+          },
+          "cardio": {
+            "type": "array",
+            "description": "Planned cardio blocks for this training day, reusing the Cardio Session activity catalog",
+            "items": {
+              "type": "object",
+              "properties": {
+                "activity": {
+                  "type": "string",
+                  "description": "Activity id from the cardio activity catalog"
+                },
+                "activity_label": {
+                  "type": "string"
+                },
+                "target_duration_minutes": {
+                  "type": "number"
+                },
+                "target_distance_km": {
+                  "type": "number"
+                },
+                "intensity": {
+                  "type": "string",
+                  "description": "Optional intensity / HR-zone note"
+                },
+                "target_calories": {
+                  "type": "number",
+                  "description": "Manually planned calorie target (kcal) for this cardio block"
+                },
+                "notes": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "name",
+    "goal",
+    "split"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "name": "WorkoutSet",
+  "type": "object",
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "Reference to the WorkoutSession this set belongs to"
+    },
+    "exercise_name": {
+      "type": "string"
+    },
+    "exercise_id": {
+      "type": "string"
+    },
+    "set_index": {
+      "type": "number",
+      "description": "Position of this set within the exercise"
+    },
+    "set_type": {
+      "type": "string",
+      "enum": [
+        "warmup",
+        "working",
+        "drop",
+        "cluster",
+        "myo",
+        "giant",
+        "superset",
+        "circuit",
+        "amrap",
+        "emom"
+      ],
+      "default": "working"
+    },
+    "weight_kg": {
+      "type": "number",
+      "description": "Weight used in kilograms"
+    },
+    "weight_lbs": {
+      "type": "number",
+      "description": "Weight used in pounds"
+    },
+    "reps": {
+      "type": "number",
+      "description": "Reps performed"
+    },
+    "rpe": {
+      "type": "number",
+      "description": "Rate of Perceived Exertion 1-10"
+    },
+    "rir": {
+      "type": "number",
+      "description": "Reps in Reserve"
+    },
+    "tempo": {
+      "type": "string",
+      "description": "Tempo e.g. 3-1-1-0"
+    },
+    "rest_seconds": {
+      "type": "number"
+    },
+    "completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_pr": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this set is a personal record"
+    },
+    "estimated_1rm": {
+      "type": "number",
+      "description": "Estimated 1RM computed from this set"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "session_id",
+    "exercise_name",
+    "set_index"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

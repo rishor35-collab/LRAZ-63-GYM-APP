@@ -1,0 +1,63 @@
+{
+  "name": "CoachMessage",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "user",
+        "assistant",
+        "system"
+      ],
+      "description": "Who produced the message"
+    },
+    "content": {
+      "type": "string",
+      "description": "Message text"
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Attached image / file URLs"
+    },
+    "context_type": {
+      "type": "string",
+      "enum": [
+        "general",
+        "workout",
+        "nutrition",
+        "recovery",
+        "body_composition",
+        "form_analysis",
+        "supplement",
+        "programming"
+      ],
+      "default": "general"
+    },
+    "structured_output": {
+      "type": "object",
+      "description": "Optional structured coaching decision payload"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "role",
+    "content"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

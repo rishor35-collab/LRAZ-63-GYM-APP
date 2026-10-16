@@ -1,0 +1,114 @@
+{
+  "name": "CardioSession",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "activity": {
+      "type": "string",
+      "description": "Activity slug e.g. treadmill-running"
+    },
+    "activity_label": {
+      "type": "string",
+      "description": "Display name e.g. Treadmill Running"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "Total session duration in seconds"
+    },
+    "distance_km": {
+      "type": "number",
+      "description": "Distance in kilometers if applicable"
+    },
+    "calories": {
+      "type": "number",
+      "description": "Calories burned (estimated, recorded, or manual)"
+    },
+    "calorie_source": {
+      "type": "string",
+      "enum": [
+        "Estimated",
+        "Recorded",
+        "Manual"
+      ],
+      "default": "Estimated",
+      "description": "How the calorie value was obtained"
+    },
+    "avg_speed_kmh": {
+      "type": "number"
+    },
+    "avg_pace_sec_per_km": {
+      "type": "number",
+      "description": "Seconds per km"
+    },
+    "incline_percent": {
+      "type": "number"
+    },
+    "resistance_level": {
+      "type": "number",
+      "description": "Machine resistance / level"
+    },
+    "steps": {
+      "type": "number"
+    },
+    "floors": {
+      "type": "number"
+    },
+    "heart_rate_avg": {
+      "type": "number"
+    },
+    "rpe": {
+      "type": "number",
+      "description": "Rate of perceived exertion 1-10"
+    },
+    "energy": {
+      "type": "number",
+      "description": "Session note: energy 1-5"
+    },
+    "performance": {
+      "type": "string",
+      "description": "Session note: Good/Strong/Average etc"
+    },
+    "soreness": {
+      "type": "number",
+      "description": "Session note: soreness 1-5"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "session_type": {
+      "type": "string",
+      "enum": [
+        "standalone",
+        "within_workout"
+      ],
+      "default": "standalone"
+    },
+    "workout_session_id": {
+      "type": "string",
+      "description": "When session_type is within_workout, the WorkoutSession this cardio belongs to"
+    },
+    "interval_config": {
+      "type": "object",
+      "description": "Optional interval structure for HIIT etc"
+    }
+  },
+  "required": [
+    "date",
+    "activity",
+    "duration_seconds"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

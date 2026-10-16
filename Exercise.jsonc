@@ -1,0 +1,244 @@
+{
+  "name": "Exercise",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name of the exercise"
+    },
+    "canonical_id": {
+      "type": "string",
+      "description": "Stable unique ID/slug so historical workouts stay valid if names change"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL/database slug for the default library"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Resistance",
+        "Bodybuilding",
+        "Powerlifting",
+        "Olympic Weightlifting",
+        "Strongman",
+        "Athletic Performance",
+        "Functional Fitness",
+        "Calisthenics",
+        "Endurance",
+        "Mobility",
+        "Rehabilitation-Aware",
+        "Cardio"
+      ],
+      "description": "Major training category"
+    },
+    "subcategory": {
+      "type": "string",
+      "description": "Muscle group e.g. Chest, Back, Legs"
+    },
+    "muscle_group": {
+      "type": "string",
+      "description": "Primary muscle group classification"
+    },
+    "movement_pattern": {
+      "type": "string",
+      "enum": [
+        "Horizontal Push",
+        "Vertical Push",
+        "Horizontal Pull",
+        "Vertical Pull",
+        "Squat",
+        "Hinge",
+        "Lunge",
+        "Hip Extension",
+        "Knee Extension",
+        "Knee Flexion",
+        "Elbow Flexion",
+        "Elbow Extension",
+        "Shoulder Abduction",
+        "Shoulder Flexion",
+        "Shoulder Extension",
+        "Calf Raise",
+        "Core Flexion",
+        "Core Extension",
+        "Core Rotation",
+        "Anti-Rotation",
+        "Carry",
+        "Conditioning",
+        "Other"
+      ],
+      "description": "Movement pattern classification"
+    },
+    "force_type": {
+      "type": "string",
+      "enum": [
+        "Push",
+        "Pull",
+        "Hold",
+        "Carry",
+        "Cardio",
+        "Other"
+      ],
+      "description": "Force direction"
+    },
+    "laterality": {
+      "type": "string",
+      "enum": [
+        "Bilateral",
+        "Unilateral"
+      ],
+      "default": "Bilateral"
+    },
+    "primary_muscle": {
+      "type": "string",
+      "description": "Primary muscle targeted"
+    },
+    "secondary_muscles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Secondary / stabilizer muscles"
+    },
+    "equipment": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Required or optional equipment"
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": [
+        "Beginner",
+        "Intermediate",
+        "Advanced",
+        "Expert"
+      ],
+      "default": "Intermediate"
+    },
+    "compound": {
+      "type": "boolean",
+      "default": true,
+      "description": "Compound (true) or isolation (false)"
+    },
+    "unilateral": {
+      "type": "boolean",
+      "default": false
+    },
+    "instructions": {
+      "type": "string",
+      "description": "Step-by-step execution instructions"
+    },
+    "setup_instructions": {
+      "type": "string",
+      "description": "Setup notes before execution"
+    },
+    "execution_instructions": {
+      "type": "string",
+      "description": "Detailed execution notes"
+    },
+    "coaching_cues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key coaching cues"
+    },
+    "common_mistakes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "safety_tips": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "progressions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Progression options"
+    },
+    "regressions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Regression / easier alternatives"
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Substitute exercises preserving training intent"
+    },
+    "rep_range_low": {
+      "type": "number",
+      "description": "Suggested minimum reps"
+    },
+    "rep_range_high": {
+      "type": "number",
+      "description": "Suggested maximum reps"
+    },
+    "rest_seconds": {
+      "type": "number",
+      "description": "Suggested rest period in seconds"
+    },
+    "tracking_type": {
+      "type": "string",
+      "enum": [
+        "strength",
+        "cardio",
+        "duration"
+      ],
+      "default": "strength",
+      "description": "How this exercise is tracked"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Anatomy / demonstration image URL"
+    },
+    "video_url": {
+      "type": "string",
+      "description": "HD demonstration video URL"
+    },
+    "is_custom": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this is a user-created custom exercise"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the exercise is active/enabled"
+    },
+    "version": {
+      "type": "number",
+      "default": 1,
+      "description": "Exercise metadata version"
+    }
+  },
+  "required": [
+    "name",
+    "category",
+    "movement_pattern",
+    "primary_muscle"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

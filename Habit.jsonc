@@ -1,0 +1,58 @@
+{
+  "name": "Habit",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Habit name e.g. Drink 3L Water, Sleep 8h, Mobility"
+    },
+    "description": {
+      "type": "string"
+    },
+    "target_per_day": {
+      "type": "number",
+      "default": 1,
+      "description": "Target completions per day"
+    },
+    "icon": {
+      "type": "string",
+      "default": "Check",
+      "description": "lucide icon name"
+    },
+    "color": {
+      "type": "string",
+      "default": "blue",
+      "description": "accent color key"
+    },
+    "frequency": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "weekly"
+      ],
+      "default": "daily"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

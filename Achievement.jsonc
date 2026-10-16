@@ -1,0 +1,74 @@
+{
+  "name": "Achievement",
+  "type": "object",
+  "properties": {
+    "achievement_id": {
+      "type": "string",
+      "description": "Stable achievement identifier"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Consistency",
+        "Strength",
+        "Body Composition",
+        "Nutrition",
+        "Recovery",
+        "Goal",
+        "Milestone"
+      ],
+      "default": "Consistency"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "requirement": {
+      "type": "string",
+      "description": "What is required to unlock"
+    },
+    "xp_reward": {
+      "type": "number",
+      "default": 50
+    },
+    "icon": {
+      "type": "string",
+      "description": "lucide icon name"
+    },
+    "progress_percent": {
+      "type": "number",
+      "default": 0,
+      "description": "Current progress toward unlock"
+    },
+    "unlocked": {
+      "type": "boolean",
+      "default": false
+    },
+    "unlocked_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "verification_source": {
+      "type": "string",
+      "description": "How the unlock was verified"
+    }
+  },
+  "required": [
+    "achievement_id",
+    "title",
+    "category"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

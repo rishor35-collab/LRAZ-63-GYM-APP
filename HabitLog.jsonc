@@ -1,0 +1,38 @@
+{
+  "name": "HabitLog",
+  "type": "object",
+  "properties": {
+    "habit_id": {
+      "type": "string",
+      "description": "Reference to the Habit this log completes"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Completion date (YYYY-MM-DD)"
+    },
+    "completed": {
+      "type": "boolean",
+      "default": true
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "habit_id",
+    "date"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

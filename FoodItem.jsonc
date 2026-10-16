@@ -1,0 +1,73 @@
+{
+  "name": "FoodItem",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "barcode": {
+      "type": "string",
+      "description": "UPC/EAN barcode"
+    },
+    "serving_size": {
+      "type": "number",
+      "description": "Default serving size in grams or ml"
+    },
+    "serving_unit": {
+      "type": "string",
+      "default": "g"
+    },
+    "calories_per_serving": {
+      "type": "number"
+    },
+    "protein_g": {
+      "type": "number"
+    },
+    "carbs_g": {
+      "type": "number"
+    },
+    "fat_g": {
+      "type": "number"
+    },
+    "fiber_g": {
+      "type": "number"
+    },
+    "sodium_mg": {
+      "type": "number"
+    },
+    "sugar_g": {
+      "type": "number"
+    },
+    "category": {
+      "type": "string",
+      "description": "Food category e.g. Protein, Dairy, Fruit"
+    },
+    "is_custom": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this is a user-created custom food"
+    },
+    "is_favorite": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "name",
+    "calories_per_serving"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}
